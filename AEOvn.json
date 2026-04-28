@@ -1,0 +1,464 @@
+{
+  "v": 11,
+  "id": "cmoi8whee44enht1mroh0qy2f",
+  "name": "AEOvn",
+  "folders": [
+    {
+      "v": 11,
+      "id": "cmoi8wq726vlxgb1mns66lx1t",
+      "name": "Auth",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "Login",
+          "method": "POST",
+          "endpoint": "https://aeovn-production.up.railway.app/api/auth/login",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n\t\"username\" : \"sajid\",\n\t\"password\" : \"sajid123\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {
+            "success": true,
+            "message": "Credentials verified. OTP sent to your registered Telegram."
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "Verify OTP",
+          "method": "POST",
+          "endpoint": "https://aeovn-production.up.railway.app/api/auth/verify-otp",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n\t\"username\" : \"admin\",\n\t\"otp\" : \"889713\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {
+            "success": true,
+            "message": "Login successful.",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM2OTE3OCwiZXhwIjoxNzc3NDU1NTc4fQ.d9iJQ4V-ojjhXjp7kecNDUoSKvPt_2gPjwI8myIuK_I",
+            "user": {
+              "id": "69f03af652ffab80bfff3318",
+              "username": "admin",
+              "role": "admin",
+              "telegramID": "7060179538",
+              "fixedIP": "::1"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "register",
+          "method": "POST",
+          "endpoint": "https://aeovn-production.up.railway.app/api/auth/register",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n  \"username\" : \"asim\",\n  \"password\" : \"asim123\",\n  \"fixedIP\" : \"59.103.127.3\",\n  \"telegramID\" : \"8559292441\",\n  \"inviteCode\" : \"4230e8d2bc9d678db337afdf5be6f0fc\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {
+            "success": true,
+            "message": "Registration submitted. Your account is pending admin approval."
+          },
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "id": "cmoi9346s44fdht1mu5fn7ft5",
+      "name": "invite",
+      "folders": [],
+      "requests": [
+        {
+          "v": "17",
+          "name": "generate",
+          "method": "POST",
+          "endpoint": "https://aeovn-production.up.railway.app/api/invite/generate",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+            "authActive": true
+          },
+          "body": {
+            "contentType": "application/json",
+            "body": "{\n\t\"expiresInMinutes\": 30, \n  \"note\": \"For Ayesha - onboarding batch 2\"\n}"
+          },
+          "requestVariables": [],
+          "responses": {
+            "success": true,
+            "message": "Invite link generated. Share it manually with the user.",
+            "data": {
+              "inviteCode": "39c925fa99294a9ebf73cda5c17611af",
+              "registrationLink": "http://localhost:3000/register?code=39c925fa99294a9ebf73cda5c17611af",
+              "expiresAt": "2026-04-28T10:20:53.545Z",
+              "expiresInMinutes": 30,
+              "note": "For Ayesha - onboarding batch 2"
+            }
+          },
+          "description": null
+        },
+        {
+          "v": "17",
+          "name": "list",
+          "method": "GET",
+          "endpoint": "https://aeovn-production.up.railway.app/api/invite/list",
+          "params": [],
+          "headers": [],
+          "preRequestScript": "",
+          "testScript": "",
+          "auth": {
+            "authType": "bearer",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+            "authActive": true
+          },
+          "body": {
+            "contentType": null,
+            "body": null
+          },
+          "requestVariables": [],
+          "responses": {
+            "success": true,
+            "count": 7,
+            "data": [
+              {
+                "id": "69f077e3effc6f4818b5180e",
+                "code": "4230e8d2bc9d678db337afdf5be6f0fc",
+                "note": "For Ayesha - onboarding batch 2",
+                "isUsed": true,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T09:33:31.547Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T09:03:31.550Z"
+              },
+              {
+                "id": "69f067eb5857686fcb6d7480",
+                "code": "5860da8e6394126df314fa06c1cc15aa",
+                "note": "For Ayesha - onboarding batch 2",
+                "isUsed": false,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T08:25:23.400Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T07:55:23.404Z"
+              },
+              {
+                "id": "69f0626687b56d360cc96acf",
+                "code": "ab8ee8f3da5a7d1bae49e66a7ca59e6b",
+                "note": "",
+                "isUsed": false,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T08:31:50.389Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T07:31:50.389Z"
+              },
+              {
+                "id": "69f061ef87b56d360cc96ace",
+                "code": "608aafa286fc5ba7ab75e8c524402180",
+                "note": "",
+                "isUsed": false,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T08:29:51.853Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T07:29:51.853Z"
+              },
+              {
+                "id": "69f061e087b56d360cc96acd",
+                "code": "989632e50871a267964eaca1db010220",
+                "note": "",
+                "isUsed": false,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T08:29:36.418Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T07:29:36.419Z"
+              },
+              {
+                "id": "69f05ef187b56d360cc96acc",
+                "code": "31ba80aea38027653c26fa7e7058c52f",
+                "note": "",
+                "isUsed": false,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T08:17:05.873Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T07:17:05.874Z"
+              },
+              {
+                "id": "69f05e6887b56d360cc96aca",
+                "code": "63e5c5410f25aba0cd477132453d5b76",
+                "note": "",
+                "isUsed": true,
+                "isExpired": true,
+                "isValid": false,
+                "expiresAt": "2026-04-28T08:14:48.627Z",
+                "createdBy": "admin",
+                "createdAt": "2026-04-28T07:14:48.627Z"
+              }
+            ]
+          },
+          "description": null
+        }
+      ],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    },
+    {
+      "v": 11,
+      "id": "cmoi9hqzp6w2xgb1mgctu6e5j",
+      "name": "Admin",
+      "folders": [
+        {
+          "v": 11,
+          "id": "cmoia6odj44ulht1mt0meb1hq",
+          "name": "users",
+          "folders": [],
+          "requests": [
+            {
+              "v": "17",
+              "name": "User Status",
+              "method": "GET",
+              "endpoint": "https://aeovn-production.up.railway.app/api/auth/status/admin",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "Get User by ID",
+              "method": "GET",
+              "endpoint": "https://aeovn-production.up.railway.app/api/admin/users/69f05e8087b56d360cc96acb",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {
+                "success": true,
+                "data": {
+                  "_id": "69f03af652ffab80bfff3318",
+                  "username": "admin",
+                  "fixedIP": "::1",
+                  "telegramID": "7060179538",
+                  "status": "approved",
+                  "role": "admin",
+                  "createdAt": "2026-04-28T04:43:34.228Z",
+                  "updatedAt": "2026-04-28T09:39:38.221Z",
+                  "__v": 0
+                }
+              },
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "Update User Status",
+              "method": "PATCH",
+              "endpoint": "https://aeovn-production.up.railway.app/api/admin/users/69f07836effc6f4818b5180f/status",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+                "authActive": true
+              },
+              "body": {
+                "contentType": "application/json",
+                "body": "{\n  \"status\" : \"approved\"\n}"
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "Update User IP",
+              "method": "PATCH",
+              "endpoint": "https://aeovn-production.up.railway.app/api/admin/users/69f07836effc6f4818b5180f/ip",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+                "authActive": true
+              },
+              "body": {
+                "contentType": "application/json",
+                "body": "{\n  \"newIP\": \"104.28.163.200\"\n}"
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "Delete User",
+              "method": "DELETE",
+              "endpoint": "https://aeovn-production.up.railway.app/api/admin/users/69f05e8087b56d360cc96acb",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {},
+              "description": null
+            },
+            {
+              "v": "17",
+              "name": "Get All Users",
+              "method": "GET",
+              "endpoint": "https://aeovn-production.up.railway.app/api/admin/users",
+              "params": [],
+              "headers": [],
+              "preRequestScript": "",
+              "testScript": "",
+              "auth": {
+                "authType": "bearer",
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5ZjAzYWY2NTJmZmFiODBiZmZmMzMxOCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3NzM1NzkwMSwiZXhwIjoxNzc3NDQ0MzAxfQ.5Lzn592EDS6BGWk4x8PkrcQnYp8SQuzgehJWSD9Z7s8",
+                "authActive": true
+              },
+              "body": {
+                "contentType": null,
+                "body": null
+              },
+              "requestVariables": [],
+              "responses": {
+                "success": true,
+                "count": 2,
+                "data": [
+                  {
+                    "_id": "69f03af652ffab80bfff3318",
+                    "username": "admin",
+                    "fixedIP": "::1",
+                    "telegramID": "7060179538",
+                    "status": "approved",
+                    "role": "admin",
+                    "createdAt": "2026-04-28T04:43:34.228Z",
+                    "updatedAt": "2026-04-28T09:39:38.221Z",
+                    "__v": 0
+                  },
+                  {
+                    "_id": "69f07836effc6f4818b5180f",
+                    "username": "asim",
+                    "fixedIP": "104.28.163.200",
+                    "telegramID": "8559292441",
+                    "status": "approved",
+                    "role": "user",
+                    "createdAt": "2026-04-28T09:04:54.632Z",
+                    "updatedAt": "2026-04-28T09:11:24.268Z",
+                    "__v": 0
+                  }
+                ]
+              },
+              "description": null
+            }
+          ],
+          "auth": {
+            "authType": "inherit",
+            "authActive": true
+          },
+          "headers": [],
+          "variables": [],
+          "description": null
+        }
+      ],
+      "requests": [],
+      "auth": {
+        "authType": "inherit",
+        "authActive": true
+      },
+      "headers": [],
+      "variables": [],
+      "description": null
+    }
+  ],
+  "requests": [],
+  "auth": {
+    "authType": "inherit",
+    "authActive": true
+  },
+  "headers": [],
+  "variables": [],
+  "description": null
+}

@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { authService } from '@/services/auth';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import PasswordInput from '@/components/ui/PasswordInput';
 
 function TelegramBotAlert({ botStartLink, onDismiss }) {
   return (
@@ -116,10 +117,9 @@ export default function LoginPage() {
             />
           </div>
 
-          <div className="[&_label]:text-slate-300 [&_input]:bg-white/10 [&_input]:border-white/20 [&_input]:text-white [&_input::placeholder]:text-slate-500 [&_input]:focus:ring-indigo-400">
-            <Input
+          <div className="[&_label]:text-slate-300 [&_input]:bg-white/10 [&_input]:border-white/20 [&_input]:text-white [&_input::placeholder]:text-slate-500 [&_input]:focus:ring-indigo-400 [&_button]:text-slate-400 [&_button:hover]:text-slate-200">
+            <PasswordInput
               label="Password"
-              type="password"
               placeholder="Enter your password"
               error={errors.password?.message}
               {...register('password', {
@@ -135,14 +135,14 @@ export default function LoginPage() {
         </form>
       )}
 
-      <div className="mt-6 pt-5 border-t border-white/10 text-center">
+      {/* <div className="mt-6 pt-5 border-t border-white/10 text-center">
         <p className="text-slate-400 text-sm">
           Have an invite code?{' '}
           <a href="/register" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">
             Register here
           </a>
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

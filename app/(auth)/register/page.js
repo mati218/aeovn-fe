@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import { authService } from '@/services/auth';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
+import PasswordInput from '@/components/ui/PasswordInput';
 import { Suspense } from 'react';
 
 function RegisterForm() {
@@ -74,7 +75,7 @@ function RegisterForm() {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="[&_label]:text-slate-300 [&_input]:bg-white/10 [&_input]:border-white/20 [&_input]:text-white [&_input::placeholder]:text-slate-500 [&_input]:focus:ring-indigo-400 space-y-4">
+        <div className="[&_label]:text-slate-300 [&_input]:bg-white/10 [&_input]:border-white/20 [&_input]:text-white [&_input::placeholder]:text-slate-500 [&_input]:focus:ring-indigo-400 [&_button]:text-slate-400 [&_button:hover]:text-slate-200 space-y-4">
           <Input
             label="Username"
             placeholder="Choose a username"
@@ -85,9 +86,8 @@ function RegisterForm() {
             })}
           />
 
-          <Input
+          <PasswordInput
             label="Password"
-            type="password"
             placeholder="Choose a password"
             error={errors.password?.message}
             {...register('password', {
@@ -123,6 +123,7 @@ function RegisterForm() {
             placeholder="Paste your invite code"
             error={errors.inviteCode?.message}
             {...register('inviteCode', { required: 'Invite code is required' })}
+            disabled
           />
         </div>
 

@@ -71,11 +71,12 @@ const {login} = useAuth();
       if (data.success) {
         sessionStorage.setItem('otp_username', variables.username);
         toast.success(data.message || 'OTP sent to your Telegram!');
-        login(data?.token, data?.user)
         if (data?.user?.role === "admin") {
+          login(data?.token, data?.user)
           console.log(data?.user?.role, "if condition worked")
           router.push('/admin/dashboard')
         } else {
+          console.log("else block")
           router.push('/verify-otp');
         }
       } else if (data.botStartLink) {

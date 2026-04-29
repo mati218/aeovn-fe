@@ -9,6 +9,7 @@ import { authService } from '@/services/auth';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
 import PasswordInput from '@/components/ui/PasswordInput';
+import { useAuth } from '@/store/AuthContext';
 
 function TelegramBotAlert({ botStartLink, onDismiss }) {
   return (
@@ -57,20 +58,27 @@ function TelegramBotAlert({ botStartLink, onDismiss }) {
 export default function LoginPage() {
   const router = useRouter();
   const [botAlert, setBotAlert] = useState(null);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+const {login} = useAuth();
   const { mutate, isPending } = useMutation({
     mutationFn: authService.login,
     onSuccess: (data, variables) => {
+      console.log(data)
       if (data.success) {
         sessionStorage.setItem('otp_username', variables.username);
         toast.success(data.message || 'OTP sent to your Telegram!');
-        router.push('/verify-otp');
+        if (data?.user?.role === "admin") {
+          login(data?.token, data?.user)
+          console.log(data?.user?.role, "if condition worked")
+          router.push('/admin/dashboard')
+        } else {
+          console.log("else block")
+          router.push('/verify-otp');
+        }
       } else if (data.botStartLink) {
         setBotAlert(data.botStartLink);
       } else {
